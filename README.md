@@ -14,7 +14,7 @@ To get a signature from a datfile:
 
 To get a signature from a DICOM:
 
-   dicomsignature <DICOMFILE>
+    dicomsignature <DICOMFILE>
 
 
 If signatures from DICOM and `*.dat` file match, there is a pretty good chance that the images were generated from the `*.dat` file. 
