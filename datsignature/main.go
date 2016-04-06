@@ -12,14 +12,7 @@ func main() {
 		fmt.Printf("Usage: %v <DATFILE>\n", os.Args[0])
 		return
 	}
-
-	rawfileinfo := siemensraw.ParseSiemensRaidFile(os.Args[1])
-
-	for _, b := range rawfileinfo[len(rawfileinfo)-1].Buffers {
-		if b.Name == string("Phoenix") {
-			fmt.Printf("%x\n", siemensraw.HashBuffer(b.Buffer))
-		}	
-	}
+	fmt.Println(siemensraw.DatFileSignature(os.Args[1]))
 }
 
 

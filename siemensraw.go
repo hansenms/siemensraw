@@ -73,6 +73,19 @@ func GetPhoenixFromDicom(filename string) string {
 	return phoenixprot
 }
 
+func DatFileSignature(filename string) string {
+	hash := ""
+	
+	rawfileinfo := ParseSiemensRaidFile(filename)
+
+	for _, b := range rawfileinfo[len(rawfileinfo)-1].Buffers {
+		if b.Name == string("Phoenix") {
+			hash = fmt.Sprintf("%x", HashBuffer(b.Buffer))
+		}	
+	}
+	return hash
+}
+
 func ParseSiemensRaidFile(filename string) []SiemensRaidFile {
 	f, err := os.Open(filename)
 	if err != nil {
