@@ -29,11 +29,11 @@ Finally there are some tools for creating a filesystem based database for raw da
 
 To add an entire folder with lots of `*.dat` files to the database:
 
-   find <FOLDER TO SEARCH> -name "*.dat" -exec addfile -b /mnt/cnmc/ -d <DATABASE PATH> {} \;
+    find <FOLDER TO SEARCH> -name "*.dat" -exec addfile -b /mnt/cnmc/ -d <DATABASE PATH> {} \;
 
 To subsequently locate a particular `*.dat` file based on signature:
 
-   findraw -d <DATABASE PATH> <SIGNATURE>
+    findraw -d <DATABASE PATH> <SIGNATURE>
 
 The output is in json format and you can use a tool like `jq` to extract info from the output:
 
