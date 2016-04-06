@@ -29,7 +29,7 @@ func main() {
 	ext := path.Ext(filename)
 	base = base[:len(base)-len(ext)]
 	newfilename := base + ".json"
-	destfolder := path.Join(*dest, string(sig[0]), string(sig[1]), string(sig[2]), string(sig[3]), string(sig[4]), string(sig[5:]))
+	destfolder := path.Join(*dest, siemensraw.PathFromSignature(sig))
 	destpath := path.Join(destfolder, newfilename)
 
 	drivepath := path.Dir(filename)

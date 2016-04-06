@@ -8,6 +8,7 @@ import(
 	"fmt"
 	"io/ioutil"
 	"os"
+	"path"
 	"strings"
 	"unicode"
 )
@@ -84,6 +85,10 @@ func DatFileSignature(filename string) string {
 		}	
 	}
 	return hash
+}
+
+func PathFromSignature(sig string) string {
+	return path.Join(string(sig[0]), string(sig[1]), string(sig[2]), string(sig[3]), string(sig[4]), string(sig[5:]))
 }
 
 func ParseSiemensRaidFile(filename string) []SiemensRaidFile {
