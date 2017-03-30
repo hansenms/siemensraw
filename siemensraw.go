@@ -147,6 +147,26 @@ func DatFileSignature(filename string) string {
 	return hash
 }
 
+func HdrFileSignature(filename string) string {
+	hash := ""
+
+	bytes, err := ioutil.ReadFile(filename)
+
+	if err != nil {
+		panic(err)
+	}
+
+	asstring := string(bytes[:])
+	idx := strings.LastIndex(asstring, "Phoenix") // first instance = noise scan, last instance = data
+	asstring = string(bytes[idx:])
+	idx = strings.Index(asstring, "### ASCCONV BEGIN")
+	idx2 := strings.Index(asstring, "### ASCCONV END ###")
+	phoenixprot := string(asstring[idx:idx2+len("### ASCCONV END ###")])
+	hash = fmt.Sprintf("%x", HashBuffer(phoenixprot))
+
+	return hash
+}
+
 func PathFromSignature(sig string) string {
 	return path.Join(string(sig[0]), string(sig[1]), string(sig[2]), string(sig[3]), string(sig[4]), string(sig[5:]))
 }
