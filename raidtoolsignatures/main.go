@@ -22,7 +22,7 @@ func main() {
 
 	numFiles, _ := strconv.Atoi(headSlice[35]) // empirically consistent
 	fileIDs := make([]string, numFiles+20) // padding to avoid 'panic'
-  fileHashes := make([]string, numFiles+20) // padding to avoid 'panic'
+        fileHashes := make([]string, numFiles+20) // padding to avoid 'panic'
 	fmt.Println("rt_head: \n", rt_head)
 
 	rr_int := -1
